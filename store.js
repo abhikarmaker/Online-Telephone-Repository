@@ -245,12 +245,6 @@ var store = {
   appVersion: "1.0",
   userData: [
     {
-      username: "admin",
-      password: "admin",
-      email: "admin@gmail.com",
-      mobile: 1234567890
-    },
-    {
       username: "abhijeet",
       password: "abhijeet",
       email: "abhi@gmail.com",
@@ -263,12 +257,8 @@ var store = {
       localStorage.getItem("userData") != null &&
       localStorage.getItem("userData") != "undefined"
     ) {
-      //console.log('in if');
       this.userData = JSON.parse(localStorage.getItem("userData"));
-      //console.log(localStorage.getItem('userData'));
     } else {
-      //console.log('in elese');
-      //console.log(JSON.stringify(users.userData));
       localStorage.setItem("userData", JSON.stringify(this.userData));
     }
   },

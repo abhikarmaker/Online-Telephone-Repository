@@ -1,7 +1,7 @@
 window.onload = function() {
   store.initializeUserData();
   store.initializeAppName();
-  store.loadData(store.userData);
+  //store.loadData(store.userData);
   document.getElementById("btnSubmit").addEventListener("click", function() {
     alert("clicked");
     var userInputData = {
@@ -12,6 +12,6 @@ window.onload = function() {
     };
     console.log(store.userData);
     store.addUser(userInputData);
-    store.loadData(store.userData);
+    //store.loadData(store.userData);
   });
 };
