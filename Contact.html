@@ -46,11 +46,37 @@
     <main id="mainContent">
       <div id="container">
         <h1>Contact Page</h1>
+        <section id="addNewContact">
+        <form id="frmContact">
+          <div>
+          <label for="txtFirstName">First Name: </label>
+          <input type="text" id="txtFirstName" name="txtFirstName">
+        </div>
+        <div>
+            <label for="txtLastName">Last Name: </label>
+            <input type="text" id="txtLastName" name="txtLastName">
+          </div>
+          <div>
+              <label for="txtEmail">Email : </label>
+              <input type="text" id="txtEmail" name="txtEmail">
+            </div>
+            <div>
+                <label for="txtMobile">Mobile : </label>
+                <input type="text" id="txtMobile" name="txtMobile">
+              </div>
+              <div>
+                <button type="button" id="btnSubmit">Save</button>
+              </div>
+            </section>
+            
+            <button type="Add" id="addCheck"> Add</button>
+        </form>
       </div>
     </main>
     <footer id="footer">
       &copy; 2019 Abhijeet Karmaker
     </footer>
     <script src="store.js"></script>
+    <script src="contact.js"></script>
   </body>
 </html>
