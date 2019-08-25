@@ -7,7 +7,7 @@
   </head>
   <body>
     <header id="topHeader">
-      <h2>Online Telephone Directory</h2>
+      <h2 id="appName"></h2>
       <nav id="topNav">
         <ul>
           <li>
@@ -26,17 +26,17 @@
       </nav>
       <div>
         <p>
-          [Welcome Guest!] &nbsp; <a href="logout.html">Logout</a>
+          [Welcome <span id="userName"></span>] &nbsp; <a href="logout.html">Logout</a>
         </p>
       </div>
     </header>
     <sidebar id="sidebar">
       <ul>
         <li>
-          <a href="">Link</a>
+          <a href="">Reset Password</a>
         </li>
         <li>
-          <a href="">Link</a>
+          <a href="">Edit Info</a>
         </li>
         <li>
           <a href="">Link</a>
@@ -44,13 +44,14 @@
       </ul>
     </sidebar>
     <main id="mainContent">
-      <h1>User Info Page</h1>
-      <h3>Contacts</h3>
-      <div id="contactPreview">
-      </div>
+
     </main>
     <footer id="footer">
       &copy; 2019 Abhijeet Karmaker
     </footer>
+    
+    <script src="userInfo.js"></script>
+    <!-- <script src="login.js"></script> -->
+    <script src="store.js"></script>
   </body>
 </html>
