@@ -1,6 +1,8 @@
 window.onload = function() {
   store.initializeUserData();
   store.initializeAppName();
+  // var username;
+  // var password;
   //store.loadData(store.userData);
   document.getElementById("btnLogin").addEventListener("click", function() {
     var data = JSON.parse(localStorage.getItem("userData"));
@@ -9,25 +11,18 @@ window.onload = function() {
     if (username == "admin" && password == "admin") {
       window.location.href = "Admin.html";
     } else if (store.validateUser(username, password)) {
-      //var id = store.userData;
-      //console.log(id);
+      console.log(store.validateUser(username,password));
+
       alert(username + " Entered ");
-      window.location.href = "UserInfo.html?userID=" +store.userInfoValidate(store.userData);
-      //document.getElementById("UserInfo").innerHTML = "Hello" + username;
-    //   for(var i = 0; i < data.length; i++){
-    //     var name = data[i].username;
-    //     console.log(name);
-    // }
+      window.location.href = "UserInfo.html?userID=" +store.validateUser(username,password);
     } else {
       alert("invalid ");
     }
   });
-  
-  store.userData = JSON.parse(localStorage.getItem("userData"));
-  
-  for (var i = 0; i < store.userData.length; i++) {
-    if (store.userData[i].userID){
-      console.log(store.userData[i].userID);
-    }
-  }
+  // console.log(store.validateUser(username,password));
+  // if(store.validateUser(id.username && id.password)){
+  //   console.log("hi");
+  // }
+
+
 };

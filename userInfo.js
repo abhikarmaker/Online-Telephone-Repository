@@ -9,7 +9,8 @@ window.onload = function(){
         return vars;
     }
 
-    var n = getUrlVars()["username"];
-    document.getElementById("userName").innerHTML = n;
+    var n = getUrlVars()["userID"];
+    document.getElementById("UserInfo").innerHTML = "Hello  " + store.userData[n-1].username;
+    document.getElementById("userName").innerHTML = store.userData[n-1].username;
 
 }

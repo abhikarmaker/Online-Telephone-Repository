@@ -273,6 +273,7 @@ var store = {
   validateUser: function(username, password) {
     
     var isValid = false;
+    var id ;
     if (
       localStorage.getItem("userData") != null &&
       localStorage.getItem("userData") != "undefined"
@@ -285,22 +286,24 @@ var store = {
         this.userData[i].password == password
       ) {
         isValid = true;
+        id = this.userData[i].userID;
         break;
       }
     }
-    return isValid;
+    return isValid, id;
   },
 
-  userInfoValidate: function(userID){
-   for(var i = 0; i < this.userData.length; i++){
-     if(this.userData[i].userID == userID){
-     //document.getElementById("UserInfo").innerHTML = "Hello " + this.userData[i].username;
-     return this.userData[i].userID;
-      // break;
-     }
-   }
-  // document.getElementById("UserInfo").innerHTML = "Hello" + username;
-  },
+
+  // userInfoValidate: function(username){
+  //  for(var i = 0; i < this.userData.length; i++){
+  //    if(this.userData[i].username == username){
+  //    //document.getElementById("UserInfo").innerHTML = "Hello " + this.userData[i].username;
+  //    return this.userData[i].username;
+  //     // break;
+  //    }
+  //  }
+  // // document.getElementById("UserInfo").innerHTML = "Hello" + username;
+  // },
 
   loadData: function loadData(gridData) {
     var display =
