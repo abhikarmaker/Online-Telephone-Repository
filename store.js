@@ -245,7 +245,7 @@ var store = {
   appVersion: "1.0",
   userData: [
     {
-      userID : 1,
+      userID: 1,
       username: "abhijeet",
       password: "abhijeet",
       email: "abhi@gmail.com",
@@ -265,14 +265,14 @@ var store = {
   },
 
   addUser: function(users) {
-    users.userID = this.userData.length + 1
+    users.userID = this.userData.length + 1;
     this.userData.push(users);
     localStorage.setItem("userData", JSON.stringify(this.userData));
   },
 
   validateUser: function(username, password) {
-    
     var isValid = false;
+    var id;
     if (
       localStorage.getItem("userData") != null &&
       localStorage.getItem("userData") != "undefined"
@@ -285,22 +285,20 @@ var store = {
         this.userData[i].password == password
       ) {
         isValid = true;
+        id = this.userData[i].userID;
         break;
       }
     }
-    return isValid;
+    return isValid, id;
   },
 
-  userInfoValidate: function(userID){
-   for(var i = 0; i < this.userData.length; i++){
-     if(this.userData[i].userID == userID){
-     //document.getElementById("UserInfo").innerHTML = "Hello " + this.userData[i].username;
-     return this.userData[i].userID;
-      // break;
-     }
-   }
-  // document.getElementById("UserInfo").innerHTML = "Hello" + username;
-  },
+  // userInfoValidate: function(username) {
+  //   for (var i = 0; i < this.userData.length; i++) {
+  //     if (this.userData[i].username == username) {
+  //       return this.userData[i].userID;
+  //     }
+  //   }
+  // },
 
   loadData: function loadData(gridData) {
     var display =
@@ -308,7 +306,7 @@ var store = {
     gridData.forEach(element => {
       display +=
         "<tr><td>" +
-        element.userID + 
+        element.userID +
         "</td><td>" +
         element.username +
         "</td><td>" +
@@ -327,7 +325,53 @@ var store = {
   },
   initializeAppName: function() {
     document.getElementById("appName").innerHTML = this.appName;
+  },
+
+  contactData: [
+    {
+      contactID: 1,
+      firstName: "Abhijeet",
+      lastName: "Karmaker",
+      email: "abhi@gmail.com",
+      mobile: 7894561230
+    }
+  ],
+  initializeContactData: function() {
+    if (
+      localStorage.getItem("contactData") != null &&
+      localStorage.getItem("contactData") != "undefined"
+    ) {
+      this.contactData = JSON.parse(localStorage.getItem("contactData"));
+    } else {
+      localStorage.setItem("contactData", JSON.stringify(this.contactData));
+    }
+  },
+  addContact: function(contacts) {
+    contacts.contactID = this.contactData.length + 1;
+    this.contactData.push(contacts);
+    localStorage.setItem("contactData", JSON.stringify(this.contactData));
+  },
+  loadContactData: function loadContactData(gridData) {
+    var display =
+      "<table><tr><th>ContactID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Mobile</th></tr>";
+    gridData.forEach(element => {
+      display +=
+        "<tr><td>" +
+        element.contactID +
+        "</td><td>" +
+        element.firstName +
+        "</td><td>" +
+        element.lastName +
+        "</td><td>" +
+        element.email +
+        "</td><td>" +
+        element.mobile +
+        "</td></tr>";
+    });
+    display += "</table>";
+
+    if (document.getElementById("displayContacts") != null) {
+      document.getElementById("displayContacts").innerHTML = display;
+    }
   }
 };
-
-  
