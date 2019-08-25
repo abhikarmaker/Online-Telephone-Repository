@@ -19,22 +19,18 @@
           <li>
             <a href="Contact.html">Contact</a>
           </li>
-          <li>
-            <a href="#">Account</a>
-          </li>
         </ul>
       </nav>
       <div>
         <p>
-          [Welcome <span id="userName"></span>] &nbsp;
-          <a href="logout.html">Logout</a>
+          [Welcome Guest!] &nbsp; <a href="Login.html">Login</a>/<a href="Register.html">Register</a>
         </p>
       </div>
     </header>
     <sidebar id="sidebar">
       <ul>
         <li>
-          <a href="">Reset Password</a>
+          <a href="resetpassword.html">Reset Password</a>
         </li>
         <li>
           <a href="editinfo.html">Edit Info</a>
@@ -45,15 +41,21 @@
       </ul>
     </sidebar>
     <main id="mainContent">
-      <h1 id="UserInfo"></h1>
-      <div id="displayContacts"></div>
+      <form id="editInfoForm">
+        <h1>Edit Info Here..</h1>
+        <label for="txtEditUsername">User Name:</label><br>
+        <input type="text" id="txtEditUsername" name="txtEditUsername" readonly><br><br>
+        <label for="txtEditPassword">Password</label><br>
+        <input type="text" id="txtEditPassword" name="txtEditPassword" readonly><br><br>
+        <label for="txtEditEmail">Email</label><br>
+        <input type="text" id="txtEditEmail" name="txtEditEmail"><br><br>
+        <label for="txtEditMobile">mobile number</label><br>
+        <input type="text" id="txtEditMobile" name="txtEditMobile"><br><br>
+        <input type="submit" id="editButton">
+      </form>
     </main>
     <footer id="footer">
       &copy; 2019 Abhijeet Karmaker
     </footer>
-
-    <script src="userInfo.js"></script>
-    <!-- <script src="login.js"></script> -->
-    <script src="store.js"></script>
   </body>
 </html>

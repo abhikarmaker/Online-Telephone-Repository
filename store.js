@@ -273,6 +273,7 @@ var store = {
   validateUser: function(username, password) {
     var isValid = false;
     var id;
+
     if (
       localStorage.getItem("userData") != null &&
       localStorage.getItem("userData") != "undefined"
@@ -292,12 +293,25 @@ var store = {
     return isValid, id;
   },
 
+
+
+  // userInfoValidate: function(username){
+  //  for(var i = 0; i < this.userData.length; i++){
+  //    if(this.userData[i].username == username){
+  //    //document.getElementById("UserInfo").innerHTML = "Hello " + this.userData[i].username;
+  //    return this.userData[i].username;
+  //     // break;
+  //    }
+  //  }
+  // // document.getElementById("UserInfo").innerHTML = "Hello" + username;
+
   // userInfoValidate: function(username) {
   //   for (var i = 0; i < this.userData.length; i++) {
   //     if (this.userData[i].username == username) {
   //       return this.userData[i].userID;
   //     }
   //   }
+
   // },
 
   loadData: function loadData(gridData) {
