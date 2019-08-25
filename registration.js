@@ -3,8 +3,10 @@ window.onload = function() {
   store.initializeAppName();
   //store.loadData(store.userData);
   document.getElementById("btnSubmit").addEventListener("click", function() {
-    alert("clicked");
+    //var userId = 1;
+    
     var userInputData = {
+      //userId = userId + 1,
       username: document.getElementById("txtUsername").value,
       password: document.getElementById("txtPassword").value,
       email: document.getElementById("txtEmail").value,
@@ -13,5 +15,6 @@ window.onload = function() {
     console.log(store.userData);
     store.addUser(userInputData);
     //store.loadData(store.userData);
+    alert("New user is added");
   });
 };

@@ -245,6 +245,7 @@ var store = {
   appVersion: "1.0",
   userData: [
     {
+      userID : 1,
       username: "abhijeet",
       password: "abhijeet",
       email: "abhi@gmail.com",
@@ -264,11 +265,13 @@ var store = {
   },
 
   addUser: function(users) {
+    users.userID = this.userData.length + 1
     this.userData.push(users);
     localStorage.setItem("userData", JSON.stringify(this.userData));
   },
 
   validateUser: function(username, password) {
+    
     var isValid = false;
     if (
       localStorage.getItem("userData") != null &&
@@ -288,12 +291,25 @@ var store = {
     return isValid;
   },
 
+  userInfoValidate: function(userID){
+   for(var i = 0; i < this.userData.length; i++){
+     if(this.userData[i].userID == userID){
+     //document.getElementById("UserInfo").innerHTML = "Hello " + this.userData[i].username;
+     return this.userData[i].userID;
+      // break;
+     }
+   }
+  // document.getElementById("UserInfo").innerHTML = "Hello" + username;
+  },
+
   loadData: function loadData(gridData) {
     var display =
-      "<table><tr><th>Username</th><th>Password</th><th>Email</th><th>Mobile</th></tr>";
+      "<table><tr><th>UserID</th><th>Username</th><th>Password</th><th>Email</th><th>Mobile</th></tr>";
     gridData.forEach(element => {
       display +=
         "<tr><td>" +
+        element.userID + 
+        "</td><td>" +
         element.username +
         "</td><td>" +
         element.password +
@@ -313,3 +329,5 @@ var store = {
     document.getElementById("appName").innerHTML = this.appName;
   }
 };
+
+  
