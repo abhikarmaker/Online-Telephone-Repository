@@ -27,7 +27,7 @@
       <div>
         <p>
           [Welcome <span id="userName"></span>] &nbsp;
-          <a href="logout.html">Logout</a>
+          <a href="" id="lnkLogout">Logout</a>
         </p>
       </div>
     </header>
@@ -47,13 +47,34 @@
     <main id="mainContent">
       <h1 id="UserInfo"></h1>
       <div id="displayContacts"></div>
+      <div id="addNewContact">
+        <form id="frmContact" name="frmContact">
+          <div>
+            <label for="txtFirstName">First Name: </label>
+            <input type="text" id="txtFirstName" name="txtFirstName" required/>
+          </div>
+          <div>
+            <label for="txtLastName">Last Name: </label>
+            <input type="text" id="txtLastName" name="txtLastName" required/>
+          </div>
+          <div>
+            <label for="txtEmail">Email : </label>
+            <input type="text" id="txtEmail" name="txtEmail" required/>
+          </div>
+          <div>
+            <label for="txtMobile">Mobile : </label>
+            <input type="text" id="txtMobile" name="txtMobile" required/>
+          </div>
+          <div>
+            <button type="button" id="btnSubmit">Save</button>
+          </div>
+        </form>
+      </div>
     </main>
     <footer id="footer">
       &copy; 2019 Abhijeet Karmaker
     </footer>
-
-    <script src="userInfo.js"></script>
-    <!-- <script src="login.js"></script> -->
     <script src="store.js"></script>
+    <script src="userInfo.js"></script>
   </body>
 </html>

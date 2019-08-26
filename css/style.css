@@ -98,3 +98,7 @@
 #grid table tr th{
   border: 2px solid green;
 }
+#footer{
+  border: 2px solid green;
+  border-radius: 10px;
+}

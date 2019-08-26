@@ -245,11 +245,11 @@ var store = {
   appVersion: "1.0",
   userData: [
     {
-      userID: 1,
-      username: "abhijeet",
-      password: "abhijeet",
-      email: "abhi@gmail.com",
-      mobile: 1591472580
+      userID: "",
+      username: "",
+      password: "",
+      email: "",
+      mobile: ""
     }
   ],
 
@@ -270,10 +270,29 @@ var store = {
     localStorage.setItem("userData", JSON.stringify(this.userData));
   },
 
+  deleteUser: function(users) {
+    for (let idx = 0; idx <= this.userData.length; idx++) {
+      if (this.userData[idx].userID == users) {
+        this.userData.splice(idx, 1);
+        localStorage.setItem("userData", JSON.stringify(store.userData));
+        break;
+      }
+    }
+  },
+
+  editUser: function(users) {
+    for (let idx = 0; idx <= this.userData.length; idx++) {
+      if (this.userData[idx].userID == users) {
+        //this.userData.splice(idx, 1);
+        localStorage.setItem("userData", JSON.stringify(store.userData));
+        break;
+      }
+    }
+  },
+
   validateUser: function(username, password) {
     var isValid = false;
     var id;
-
     if (
       localStorage.getItem("userData") != null &&
       localStorage.getItem("userData") != "undefined"
@@ -293,30 +312,20 @@ var store = {
     return isValid, id;
   },
 
-
-
-  // userInfoValidate: function(username){
-  //  for(var i = 0; i < this.userData.length; i++){
-  //    if(this.userData[i].username == username){
-  //    //document.getElementById("UserInfo").innerHTML = "Hello " + this.userData[i].username;
-  //    return this.userData[i].username;
-  //     // break;
-  //    }
-  //  }
-  // // document.getElementById("UserInfo").innerHTML = "Hello" + username;
-
-  // userInfoValidate: function(username) {
-  //   for (var i = 0; i < this.userData.length; i++) {
-  //     if (this.userData[i].username == username) {
-  //       return this.userData[i].userID;
-  //     }
-  //   }
-
-  // },
+  getUserByUserId: function(userId) {
+    var obj = null;
+    for (var i = 0; i < this.userData.length; i++) {
+      if (this.userData[i].userID == userId) {
+        obj = this.userData[i];
+        break;
+      }
+    }
+    return obj;
+  },
 
   loadData: function loadData(gridData) {
     var display =
-      "<table><tr><th>UserID</th><th>Username</th><th>Password</th><th>Email</th><th>Mobile</th></tr>";
+      "<table><tr><th>UserID</th><th>Username</th><th>Password</th><th>Email</th><th>Mobile</th><th>Action</th></tr>";
     gridData.forEach(element => {
       display +=
         "<tr><td>" +
@@ -329,7 +338,9 @@ var store = {
         element.email +
         "</td><td>" +
         element.mobile +
-        "</td></tr>";
+        "</td><td><a class = 'btn-danger' onclick = 'fnDelete(" +
+        element.userID +
+        ")'>Delete</a>&nbsp;&nbsp<a class = 'btn-primary' id='btnEdit'>Edit</a></td></tr>";
     });
     display += "</table>";
 
@@ -343,11 +354,12 @@ var store = {
 
   contactData: [
     {
-      contactID: 1,
-      firstName: "Abhijeet",
-      lastName: "Karmaker",
-      email: "abhi@gmail.com",
-      mobile: 7894561230
+      contactID: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      mobile: "",
+      userID: ""
     }
   ],
   initializeContactData: function() {
@@ -360,14 +372,16 @@ var store = {
       localStorage.setItem("contactData", JSON.stringify(this.contactData));
     }
   },
+
   addContact: function(contacts) {
     contacts.contactID = this.contactData.length + 1;
     this.contactData.push(contacts);
     localStorage.setItem("contactData", JSON.stringify(this.contactData));
   },
+
   loadContactData: function loadContactData(gridData) {
     var display =
-      "<table><tr><th>ContactID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Mobile</th></tr>";
+      "<table><tr><th>ContactID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Mobile</th><th>userID</th></tr>";
     gridData.forEach(element => {
       display +=
         "<tr><td>" +
@@ -380,6 +394,8 @@ var store = {
         element.email +
         "</td><td>" +
         element.mobile +
+        "</td><td>" +
+        element.userID +
         "</td></tr>";
     });
     display += "</table>";
@@ -389,3 +405,15 @@ var store = {
     }
   }
 };
+
+function fnDelete(user) {
+  var status = confirm("Are you sure you want to delete this user?");
+  if (status) {
+    store.deleteUser(user);
+    store.loadData(store.userData);
+  }
+}
+
+function fnEdit(user) {
+  store.editUser(user);
+}
