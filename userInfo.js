@@ -16,12 +16,7 @@ window.onload = function() {
     var n = getUrlVars()["userID"];
     document.getElementById("UserInfo").innerHTML = "Hello  " + store.userData[n-1].username;
     document.getElementById("userName").innerHTML = store.userData[n-1].username;
-
-}
-
   var n = getUrlVars()["userID"];
-  console.log(n);
-  console.log(store.userData[n-1]);
   document.getElementById("UserInfo").innerHTML =
     "Hello " + store.userData[n-1].username;
   document.getElementById("userName").innerHTML = store.userData[n-1].username;
